@@ -3,55 +3,270 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>cart</title>
+    <title>Your Cart</title>
     <link rel="stylesheet" href="./api.css">
+    <style>
+      .header{
+        /* margin-bottom: 100px; */
+      }
+        /* General Cart Styling */
+        #cart-container {
+            padding: 20px;
+            background-color: #f8f8f8;
+            max-width: 900px;
+            margin: 100px auto;
+        }
+
+        h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .cart-item {
+            display: flex;
+            margin-bottom: 20px;
+            padding: 10px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .cart-item-details {
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cart-item-image {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            margin-right: 20px;
+        }
+
+        .cart-item-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            flex-grow: 1;
+        }
+
+        .cart-item-info h3 {
+            margin: 0;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .price {
+            font-size: 16px;
+            font-weight: bold;
+            color: rgb(0, 0, 0);
+        }
+
+        .quantity {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .quantity button {
+            background-color: rgb(0, 0, 0);
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+
+        .quantity-count {
+            margin: 0 10px;
+            font-size: 18px;
+        }
+
+        .remove {
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            font-size: 20px;
+            color: rgb(253, 0, 0);
+        }
+
+        #clear-cart {
+            background-color: rgb(40, 37, 35);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin-top: 30px;
+            cursor: pointer;
+            font-size: 18px;
+            border-radius: 5px;
+            width: 100%;
+        }
+
+        #total-amount {
+            font-size: 20px;
+            font-weight: bold;
+            text-align: right;
+            margin-top: 20px;
+            color: rgb(0, 0, 0);
+        }
+
+        #total-count {
+            font-size: 18px;
+            text-align: right;
+            color: #444;
+            margin-top: 10px;
+        }
+
+        .empty-cart-message {
+            font-size: 18px;
+            text-align: center;
+            color: #888;
+        }
+    </style>
 </head>
 <body>
-      <!-- header part -->
-      <header class="header">
-        <div><h2><a href="./index.html">ecommerce</a></h2></div>
+    <!-- header part -->
+    <header class="header">
+        <div><h2>eCommerce</h2></div>
         <div class="headerdeitiles">
-            <p class="anchor"><a href="./index.html">home</a></p>
-            <p class="anchor"><a href="./products.html">product</a></p>
-            <p class="anchor"> <a href="./about.html">about</a></p>
-            <p class="anchor"><a href="./contact.html">contact</a></p>
-        
+            <p class="anchor"><a href="./">Home</a></p>
+            <p class="anchor"><a href="./products.html">Products</a></p>
+            <p class="anchor"><a href="./about.html">About</a></p>
+            <p class="anchor"><a href="./contact.html">Contact</a></p>
         </div>
         <div>
-            <button class="button"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-in-right" viewBox="0 0 16 16">
-                <path fill-rule="evenodd" d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0z"/>
-                <path fill-rule="evenodd" d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z"/>
-              </svg>  <a href="./login.html">login</a></button>
-
-            <button class="button"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill-add" viewBox="0 0 16 16">
-                <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0m-2-6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
-                <path d="M2 13c0 1 1 1 1 1h5.256A4.5 4.5 0 0 1 8 12.5a4.5 4.5 0 0 1 1.544-3.393Q8.844 9.002 8 9c-5 0-6 3-6 4"/>
-              </svg> <a href="./register.html"> register</a></button>
-
-            <button class="button"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
-                <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l.84 4.479 9.144-.459L13.89 4zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
-              </svg> <a>cart(0)</a></button>
-
+            <button class="button"><a href="./login.html">Login</a></button>
+            <button class="button"><a href="./register.html">Register</a></button>
         </div>
     </header>
-    <!--  -->
 
-    <h1 class="aboutcenter">cart</h1>
-    <p class="aboutborder"></p>
+    <!-- Cart Section -->
+    <div id="cart-container">
+        <h2>Your Cart</h2>
+        <div id="cart-items"></div>
+        <div id="total-count">Total Count: 0</div>
+        <div id="total-amount">Total: $0</div>
+        <button id="clear-cart">Clear Cart</button>
+    </div>
+    <script>
+        // Load products from localStorage and display them
+        window.onload = function() {
+            const cartItemsContainer = document.getElementById('cart-items');
+            const totalAmount = document.getElementById('total-amount');
+            const totalCount = document.getElementById('total-count');
+            let cartProducts = JSON.parse(localStorage.getItem('cart')) || [];
 
-   <p class="empty">your cart is empty</p>
-    <h3 class="shopping"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-circle-fill" viewBox="0 0 16 16">
-      <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0m3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5z"/>
-    </svg>  <a href="./products.html" style="color:black;">continue shopping</a></h3>
-    <br>
-    <P class="madeby" id="madebottom">made with ❤️ by  <U><B>SHIVA SANKAR</U></P>
+            // Function to calculate and display the total amount and count
+            function updateCartSummary() {
+                let total = 0;
+                let count = 0;
+                cartProducts.forEach(product => {
+                    total += product.price * product.quantity;
+                    count += product.quantity;
+                });
+                totalAmount.textContent = `Total: $${total.toFixed(2)}`;
+                totalCount.textContent = `Total Count: ${count}`;
+            }
 
+            if (cartProducts.length === 0) {
+                cartItemsContainer.innerHTML = `<p class="empty-cart-message"><a href="./index.html">
+go to cart page.</a></p>`;
+            } else {
+                cartProducts.forEach(product => {
+                    const cartItem = document.createElement('div');
+                    cartItem.classList.add('cart-item');
+                    cartItem.setAttribute('data-id', product.id);
 
+                    cartItem.innerHTML = `
+                        <div class="cart-item-details">
+                            <img src="${product.image}" alt="${product.title}" class="cart-item-image">
+                            <div class="cart-item-info">
+                                <h3>${product.title}</h3>
+                                <p>${product.description.slice(0, 60)}...</p>
+                                <div class="price">$${product.price}</div>
+                                <div class="quantity">
+                                    <button class="decrease">-</button>
+                                    <span class="quantity-count">${product.quantity}</span>
+                                    <button class="increase">+</button>
+                                </div>
+                            </div>
+                            <button class="remove">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+                                    <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47M8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5"/>
+                                </svg>
+                            </button>
+                        </div>
+                    `;
 
+                    // Event listener to increase quantity
+                    cartItem.querySelector('.increase').addEventListener('click', () => {
+                        product.quantity++;
+                        updateCartItem(cartItem, product);
+                        updateCartSummary();
+                    });
 
+                    // Event listener to decrease quantity
+                    cartItem.querySelector('.decrease').addEventListener('click', () => {
+                        if (product.quantity > 1) {
+                            product.quantity--;
+                            updateCartItem(cartItem, product);
+                            updateCartSummary();
+                        }
+                    });
 
+                    // Event listener to remove item from cart
+                    cartItem.querySelector('.remove').addEventListener('click', () => {
+                        removeFromCart(product.id, cartItem);
+                        updateCartSummary();
+                    });
 
-    
-    
+                    cartItemsContainer.appendChild(cartItem);
+                });
+            }
+
+            // Clear cart button
+            document.getElementById('clear-cart').addEventListener('click', () => {
+                localStorage.removeItem('cart');
+                cartItemsContainer.innerHTML = '<p class="empty-cart-message">Your cart is empty.</p>';
+                updateCartSummary();
+            });
+
+            // Update cart item after quantity change
+            function updateCartItem(cartItem, product) {
+                const quantityElement = cartItem.querySelector('.quantity-count');
+                quantityElement.textContent = product.quantity;
+
+                // Update the cart in localStorage
+                cartProducts = JSON.parse(localStorage.getItem('cart'));
+                const productIndex = cartProducts.findIndex(item => item.id === product.id);
+                if (productIndex >= 0) {
+                    cartProducts[productIndex] = product;
+                    localStorage.setItem('cart', JSON.stringify(cartProducts));
+                }
+            }
+
+            // Remove item from cart
+            function removeFromCart(productId, cartItem) {
+                cartProducts = JSON.parse(localStorage.getItem('cart'));
+                cartProducts = cartProducts.filter(product => product.id !== productId);
+                localStorage.setItem('cart', JSON.stringify(cartProducts));
+
+                // Remove item from DOM
+                cartItem.remove();
+
+                // If the cart is empty, show the empty cart message
+                if (cartProducts.length === 0) {
+                    cartItemsContainer.innerHTML = '<p class="empty-cart-message">Your cart is empty.</p>';
+                }
+            }
+
+            // Initialize total amount and count
+            updateCartSummary();
+        };
+    </script>
 </body>
 </html>

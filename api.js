@@ -45,39 +45,262 @@
 
 
 
-// 222222222222222222222222
+
+// const apiEndpoint = "https://fakestoreapi.com/products";
+// let cartCount = 0;
+
+// // Fetch and display products based on category
+// async function fetchProducts(category = "all") {
+//     try {
+//         const response = await fetch(apiEndpoint);
+//         const products = await response.json();
+        
+//         let filteredProducts = products;
+
+//         // Filter products by category
+//         if (category !== "all") {
+//             filteredProducts = products.filter(product => product.category === category);
+//         }
+
+//         const productGrid = document.getElementById('product-grid');
+//         productGrid.innerHTML = ''; // Clear previous products
+
+//         // Display filtered products
+//         filteredProducts.forEach(product => {
+//             const productCard = document.createElement('div');
+//             productCard.classList.add('product-card');
+
+//             productCard.innerHTML = `
+//             <div class="borderfeatch">
+//                 <img class="height" src="${product.image}" alt="${product.title}">
+//                 <h3>${product.title.slice(0, 15)}...</h3>
+//                 <p>${product.description.slice(0, 60)}...</p>
+//                 <hr>
+//                 <div class="price">$${product.price}</div>
+//                 <hr>
+//                 <div class="addcartcenter">
+//                     <button class="details">Details</button>
+//                     <button class="cart">Add to Cart</button>
+//                 </div>
+//             </div>
+//             `;
+
+//             const cartButton = productCard.querySelector('.cart');
+//             cartButton.addEventListener('click', () => {
+//                 cartCount++;
+//                 updateCartCounter();
+//             });
+
+//             productGrid.appendChild(productCard);
+//         });
+//     } catch (error) {
+//         console.error('Error fetching products:', error);
+//     }
+// }
+
+// // Update cart counter
+// function updateCartCounter() {
+//     const counter = document.querySelector('.bi-cart3 + a');
+//     counter.innerHTML = `cart(${cartCount})`;
+// }
+
+// // Add event listeners for category filtering
+// document.querySelectorAll('.latestpro').forEach(button => {
+//     button.addEventListener('click', (event) => {
+//         const categoryText = event.target.textContent.trim().toLowerCase();
+//         let category = "all"; // Default to all products
+
+//         // Map button text to category
+//         if (categoryText === "mens clothing") {
+//             category = "men's clothing";
+//         } else if (categoryText === "womens clothing") {
+//             category = "women's clothing";
+//         } else if (categoryText === "jewelery") {
+//             category = "jewelery";
+//         } else if (categoryText === "electronics") {
+//             category = "electronics";
+//         }
+
+//         // Fetch products for the selected category
+//         fetchProducts(category);
+//     });
+// });
+
+// // Fetch all products on page load
+// fetchProducts();
+
+
+
+
+
+
+// const apiEndpoint = "https://fakestoreapi.com/products";
+
+// async function fetchElectronics() {
+//     try {
+//         const response = await fetch(apiEndpoint);
+//         const products = await response.json();
+        
+//         // Filter electronics category
+//         const electronicsProducts = products.filter(product => product.category === "electronics");
+
+//         const productGrid = document.getElementById('product-grid');
+//         productGrid.innerHTML = ''; // Clear previous products
+
+//         // Display only electronics products
+//         electronicsProducts.forEach(product => {
+//             const productCard = document.createElement('div');
+//             productCard.classList.add('product-card');
+
+//             productCard.innerHTML = `
+//             <div class="borderfeatch">
+//                 <img class="height" src="${product.image}" alt="${product.title}">
+//                 <h3>${product.title.slice(0, 15)}...</h3>
+//                 <p>${product.description.slice(0, 60)}...</p>
+//                 <hr>
+//                 <div class="price">$${product.price}</div>
+//                 <hr>
+//                 <div class="addcartcenter">
+//                     <button class="details">Details</button>
+//                     <button class="cart">Add to Cart</button>
+//                 </div>
+//             </div>
+//             `;
+
+//             productGrid.appendChild(productCard);
+//         });
+//     } catch (error) {
+//         console.error('Error fetching electronics:', error);
+//     }
+// }
+
+// // Fetch and display electronics products on page load
+// fetchElectronics();
+
+
+// const apiEndpoint = "https://fakestoreapi.com/products";
+// let cartCount = 0;
+// let cartItems = new Set(); // Track unique products by their ID
+
+// // Fetch and display products based on category
+// async function fetchProducts(category = "all") {
+//     try {
+//         const response = await fetch(apiEndpoint);
+//         const products = await response.json();
+        
+//         let filteredProducts = products;
+
+//         // Filter products by category
+//         if (category !== "all") {
+//             filteredProducts = products.filter(product => product.category === category);
+//         }
+
+//         const productGrid = document.getElementById('product-grid');
+//         productGrid.innerHTML = ''; // Clear previous products
+
+//         // Display filtered products
+//         filteredProducts.forEach(product => {
+//             const productCard = document.createElement('div');
+//             productCard.classList.add('product-card');
+
+//             productCard.innerHTML = `
+//             <div class="borderfeatch">
+//                 <img class="height" src="${product.image}" alt="${product.title}">
+//                 <h3>${product.title.slice(0, 15)}...</h3>
+//                 <p>${product.description.slice(0, 60)}...</p>
+//                 <hr>
+//                 <div class="price">$${product.price}</div>
+//                 <hr>
+//                 <div class="addcartcenter">
+//                     <button class="details">Details</button>
+//                     <button class="cart">Add to Cart</button>
+//                 </div>
+//             </div>
+//             `;
+
+//             const cartButton = productCard.querySelector('.cart');
+//             cartButton.addEventListener('click', () => {
+//                 addToCart(product);
+//             });
+
+//             productGrid.appendChild(productCard);
+//         });
+//     } catch (error) {
+//         console.error('Error fetching products:', error);
+//     }
+// }
+
+// // Add product to cart
+// function addToCart(product) {
+//     if (cartItems.has(product.id)) {
+//         alert("This product is already in your cart!");
+//     } else {
+//         cartItems.add(product.id);
+//         cartCount++;
+//         updateCartCounter();
+//         alert(`${product.title} has been added to your cart.`);
+//     }
+// }
+
+// // Update cart counter
+// function updateCartCounter() {
+//     const counter = document.querySelector('.bi-cart3 + a');
+//     counter.innerHTML = `cart(${cartCount})`;
+// }
+
+// // Add event listeners for category filtering
+// document.querySelectorAll('.latestpro').forEach(button => {
+//     button.addEventListener('click', (event) => {
+//         const categoryText = event.target.textContent.trim().toLowerCase();
+//         let category = "all"; // Default to all products
+
+//         // Map button text to category
+//         if (categoryText === "mens clothing") {
+//             category = "men's clothing";
+//         } else if (categoryText === "womens clothing") {
+//             category = "women's clothing";
+//         } else if (categoryText === "jewelery") {
+//             category = "jewelery";
+//         } else if (categoryText === "electronics") {
+//             category = "electronics";
+//         }
+
+//         // Fetch products for the selected category
+//         fetchProducts(category);
+//     });
+// });
+
+// // Fetch all products on page load
+// fetchProducts();
+
+
 
 const apiEndpoint = "https://fakestoreapi.com/products";
-let cartCount = 0; // Keeps track of the number of items in the cart
-let cartItems = []; // Stores added cart items
+let cartCount = 0;
+let cartItems = new Set(); // Track unique products by their ID
 
-// Fetch products by category
-async function fetchProductsByCategory(category) {
+// Fetch and display products based on category
+async function fetchProducts(category = "all") {
     try {
         const response = await fetch(apiEndpoint);
         const products = await response.json();
+        
+        let filteredProducts = products;
 
-        // Filter products based on the selected category
-        const filteredProducts = products.filter(product =>
-            category === 'all' || product.category.toLowerCase().includes(category)
-        );
+        // Filter products by category
+        if (category !== "all") {
+            filteredProducts = products.filter(product => product.category === category);
+        }
 
-        displayProducts(filteredProducts);
-    } catch (error) {
-        console.error("Error fetching products:", error);
-    }
-}
+        const productGrid = document.getElementById('product-grid');
+        productGrid.innerHTML = ''; // Clear previous products
 
-// Display products dynamically
-function displayProducts(products) {
-    const productGrid = document.getElementById("product-grid");
-    productGrid.innerHTML = ''; // Clear existing products
+        // Display filtered products
+        filteredProducts.forEach(product => {
+            const productCard = document.createElement('div');
+            productCard.classList.add('product-card');
 
-    products.forEach(product => {
-        const productCard = document.createElement("div");
-        productCard.classList.add("product-card");
-
-        productCard.innerHTML = `
+            productCard.innerHTML = `
             <div class="borderfeatch">
                 <img class="height" src="${product.image}" alt="${product.title}">
                 <h3>${product.title.slice(0, 15)}...</h3>
@@ -87,51 +310,71 @@ function displayProducts(products) {
                 <hr>
                 <div class="addcartcenter">
                     <button class="details">Details</button>
-                    <button class="cart" data-id="${product.id}" data-title="${product.title}" data-price="${product.price}">Add to Cart</button>
+                    <button class="cart">Add to Cart</button>
                 </div>
             </div>
-        `;
+            `;
 
-        productGrid.appendChild(productCard);
-    });
+            const cartButton = productCard.querySelector('.cart');
+            cartButton.addEventListener('click', () => {
+                addToCart(product);
+            });
 
-    // Add event listeners for "Add to Cart" buttons
-    const cartButtons = document.querySelectorAll(".cart");
-    cartButtons.forEach(button => {
-        button.addEventListener("click", () => {
-            const productId = button.getAttribute("data-id");
-            const productTitle = button.getAttribute("data-title");
-            const productPrice = button.getAttribute("data-price");
-
-            addToCart({ id: productId, title: productTitle, price: parseFloat(productPrice) });
+            productGrid.appendChild(productCard);
         });
-    });
-}
-
-// Add product to the cart
-function addToCart(product) {
-    // Check if the product is already in the cart
-    const existingProduct = cartItems.find(item => item.id === product.id);
-    if (existingProduct) {
-        alert(`${product.title} is already in the cart!`);
-        return;
+    } catch (error) {
+        console.error('Error fetching products:', error);
     }
-
-    // Add product to cart and update counter
-    cartItems.push(product);
-    cartCount++;
-    updateCartCounter();
-    (`${product.title} has been added to the cart!`);
 }
 
-// Update cart counter in the header
+// Add product to cart
+function addToCart(product) {
+    if (cartItems.has(product.id)) {
+        ("This product is already in your cart!");
+    } else {
+        cartItems.add(product.id);
+        cartCount++;
+        updateCartCounter();
+        saveCartToLocalStorage(product);
+        (`${product.title} has been added to your cart.`);
+    }
+}
+
+// Save cart items to localStorage
+function saveCartToLocalStorage(product) {
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    cart.push(product);
+    localStorage.setItem('cart', JSON.stringify(cart));
+}
+
+// Update cart counter
 function updateCartCounter() {
-    const cartCounter = document.getElementById("caradding");
-    cartCounter.textContent = `(${cartCount})`;
+    const counter = document.querySelector('.bi-cart3 + a');
+    counter.innerHTML = `cart(${cartCount})`;
 }
-fetchProductsByCategory("all");
 
-// 22222222222222222222222
+// Add event listeners for category filtering
+document.querySelectorAll('.latestpro').forEach(button => {
+    button.addEventListener('click', (event) => {
+        const categoryText = event.target.textContent.trim().toLowerCase();
+        let category = "all"; // Default to all products
 
+        // Map button text to category
+        if (categoryText === "mens clothing") {
+            category = "men's clothing";
+        } else if (categoryText === "womens clothing") {
+            category = "women's clothing";
+        } else if (categoryText === "jewelery") {
+            category = "jewelery";
+        } else if (categoryText === "electronics") {
+            category = "electronics";
+        }
 
+        // Fetch products for the selected category
+        fetchProducts(category);
+    });
+});
+
+// Fetch all products on page load
+fetchProducts();
 
